@@ -1,0 +1,15 @@
+# Node
+node_modules
+npm-debug.log
+
+# Docker
+*.log
+
+# VS Code
+.vscode
+
+# Dev Containers
+.devcontainer/.cache
+
+# OS
+.DS_Store

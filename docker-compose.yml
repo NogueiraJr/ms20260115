@@ -1,0 +1,12 @@
+services:
+  gateway:
+    build: ./gateway
+    container_name: gateway
+    ports:
+      - "3000:3000"
+    depends_on:
+      - hello-service
+
+  hello-service:
+    build: ./hello-service
+    container_name: hello-service
