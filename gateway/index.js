@@ -8,7 +8,7 @@ const HELLO_SERVICE_URL =
 
 app.get("/hello", async (req, res) => {
   try {
-    const response = await fetch(`${HELLO_SERVICE_URL}/hello`);
+    const response = await fetch(`${HELLO_SERVICE_URL}/v1/hello`);
     const data = await response.json();
 
     console.log(
