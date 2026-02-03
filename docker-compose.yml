@@ -2,13 +2,19 @@ services:
   hello-service:
     build: ./hello-service
     container_name: hello-service
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
 
   gateway:
     build: ./gateway
     container_name: gateway
     ports:
       - "3000:3000"
-    depends_on:
-      - hello-service
     env_file:
       - .env
+    depends_on:
+      hello-service:
+        condition: service_healthy

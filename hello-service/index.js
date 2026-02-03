@@ -5,6 +5,10 @@ app.get("/hello", (req, res) => {
   res.json({ message: "Olá, microsserviços!" });
 });
 
+app.get("/health", (req, res) => {
+  res.json({ status: "UP" });
+});
+
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`hello-service rodando na porta ${PORT}`);
