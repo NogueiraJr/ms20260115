@@ -1,4 +1,21 @@
 services:
+  postgres:
+    image: postgres:16
+    container_name: hello-postgres
+    environment:
+      POSTGRES_DB: hello_db
+      POSTGRES_USER: hello_user
+      POSTGRES_PASSWORD: hello_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hello_user -d hello_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   hello-service:
     build: ./hello-service
     container_name: hello-service
@@ -7,6 +24,11 @@ services:
       interval: 10s
       timeout: 3s
       retries: 3
+    depends_on:
+      postgres:
+        condition: service_healthy
+    env_file:
+      - .env
 
   gateway:
     build: ./gateway
@@ -18,3 +40,6 @@ services:
     depends_on:
       hello-service:
         condition: service_healthy
+
+volumes:
+  pgdata:
