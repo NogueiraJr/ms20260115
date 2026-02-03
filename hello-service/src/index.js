@@ -1,9 +1,12 @@
 const express = require("express");
 const app = express();
 
-app.get("/hello", (req, res) => {
+const helloRepository = require("./repositories/helloRepository");
+
+app.get("/hello", async (req, res) => {
   console.log("[HELLO-SERVICE] /hello chamado");
-  res.json({ message: "Olá, microsserviços!" });
+  const message = await helloRepository.getHelloMessage();
+  res.json(message);
 });
 
 app.get("/health", (req, res) => {
