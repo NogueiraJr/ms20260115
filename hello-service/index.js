@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 
 app.get("/hello", (req, res) => {
+  console.log("[HELLO-SERVICE] /hello chamado");
   res.json({ message: "Olá, microsserviços!" });
 });
 
@@ -11,5 +12,5 @@ app.get("/health", (req, res) => {
 
 const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`hello-service rodando na porta ${PORT}`);
+  console.log(`[HELLO-SERVICE] rodando na porta ${PORT}`);
 });
