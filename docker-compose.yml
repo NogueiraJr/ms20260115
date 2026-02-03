@@ -1,4 +1,8 @@
 services:
+  hello-service:
+    build: ./hello-service
+    container_name: hello-service
+
   gateway:
     build: ./gateway
     container_name: gateway
@@ -6,7 +10,5 @@ services:
       - "3000:3000"
     depends_on:
       - hello-service
-
-  hello-service:
-    build: ./hello-service
-    container_name: hello-service
+    environment:
+      - HELLO_SERVICE_URL=http://hello-service:3000

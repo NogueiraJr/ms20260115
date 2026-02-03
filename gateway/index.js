@@ -3,7 +3,10 @@ const app = express();
 
 app.get("/hello", async (req, res) => {
   try {
-    const response = await fetch("http://hello-service:3000/hello");
+    const HELLO_SERVICE_URL =
+      process.env.HELLO_SERVICE_URL || "http://localhost:3000";
+
+    const response = await fetch(`${HELLO_SERVICE_URL}/hello`);
     const data = await response.json();
     res.json({
       from: "gateway",
