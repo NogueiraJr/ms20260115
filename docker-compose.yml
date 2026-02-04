@@ -54,5 +54,16 @@ services:
       hello-service:
         condition: service_healthy
 
+  prisma-migrate:
+    build:
+      context: ./hello-service
+      dockerfile: Dockerfile.prisma
+    container_name: prisma-migrate
+    env_file:
+      - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+
 volumes:
   pgdata:
