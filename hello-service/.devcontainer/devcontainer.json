@@ -3,5 +3,13 @@
   "image": "node:20",
   "workspaceFolder": "/workspace",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
-  "forwardPorts": [3000]
+  "remoteUser": "root",
+  "features": {},
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "sh"
+      }
+    }
+  }
 }

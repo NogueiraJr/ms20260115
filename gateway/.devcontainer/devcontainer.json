@@ -3,9 +3,17 @@
   "image": "node:20",
   "workspaceFolder": "/workspace",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "remoteUser": "root",
   "forwardPorts": [3000, 9229],
   "postCreateCommand": "npm install",
   "remoteEnv": {
-    "HELLO_SERVICE_URL": "http://localhost:3000"
+    "HELLO_SERVICE_URL": "http://hello-service:3000"
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "sh"
+      }
+    }
   }
 }
