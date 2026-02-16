@@ -7,12 +7,14 @@
     "migrate": "npx prisma migrate deploy"
   },
   "dependencies": {
-    "express": "^4.19.2",
-    "pg": "^8.11.5",
+    "@prisma/client": "^5.9.1",
     "amqplib": "^0.10.3",
-    "@prisma/client": "^5.9.1"
+    "express": "^4.19.2",
+    "pg": "^8.11.5"
   },
-    "devDependencies": {
-    "prisma": "^5.9.1"
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "prisma": "^5.9.1",
+    "supertest": "^7.2.2"
   }
 }
